@@ -7,7 +7,16 @@ public abstract class Empleado {
         private String telefono;
         private String correo;
 
-        public String getCedula() {
+    public Empleado(String cedula, String nombre, int edad, String telefono, String correo) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.telefono = telefono;
+        this.correo = correo;
+    }
+
+
+    public String getCedula() {
                 return cedula;
         }
 
@@ -50,6 +59,7 @@ public abstract class Empleado {
         abstract public void mostarInformacion();
 
         abstract public double calcularPago();
+
 
 
 }
