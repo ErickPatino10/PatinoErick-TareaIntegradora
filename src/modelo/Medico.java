@@ -27,8 +27,7 @@ public class Medico extends Empleado {
     public void setNumeroPacientesAtendidos(int numeroPacientesAtendidos) {
         this.numeroPacientesAtendidos = numeroPacientesAtendidos;
     }
-    public void setValorConsulta(double valorConsulta){
-        this.valorConsulta = valorConsulta;
+    public void setValorConsulta(double valorConsulta){ this.valorConsulta = valorConsulta;
     }
 
     @Override
