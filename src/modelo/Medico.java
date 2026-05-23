@@ -37,7 +37,7 @@ public class Medico extends Empleado {
 
 
     @Override
-    public void mostarInformacion() {
+    public void mostrarInformacion() {
         System.out.println("=== MÉDICO ===");
         System.out.println("Cédula       : " + getCedula());
         System.out.println("Nombre       : " + getNombre());

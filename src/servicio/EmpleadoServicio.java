@@ -17,7 +17,7 @@ public class EmpleadoServicio {
         sc = new Scanner(System.in);
     }
 
-    public void registarMedicos() {
+    public void registrarMedicos() {
 
         System.out.println("\n Registrar nuevo Medico.");
 
@@ -61,7 +61,7 @@ public class EmpleadoServicio {
     }
 
 
-    public void registarAdministrativos() {
+    public void registrarAdministrativos() {
 
         System.out.println("\n Registrar nuevo Administrativo.");
 
@@ -111,7 +111,7 @@ public class EmpleadoServicio {
             return;
         }
         for (Empleado e : empleados){
-            e.mostarInformacion();
+            e.mostrarInformacion();
         }
     }
 
@@ -121,7 +121,7 @@ public class EmpleadoServicio {
 
         for (Empleado e : empleados){
             if (cedulaIngresada.equals(e.getCedula())){
-                e.mostarInformacion();
+                e.mostrarInformacion();
                 return;
             }
         }

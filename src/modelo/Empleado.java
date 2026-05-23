@@ -56,7 +56,7 @@ public abstract class Empleado {
                 this.correo = correo;
         }
 
-        abstract public void mostarInformacion();
+        abstract public void mostrarInformacion();
 
         abstract public double calcularPago();
 

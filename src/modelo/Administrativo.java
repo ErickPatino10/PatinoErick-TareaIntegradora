@@ -39,7 +39,7 @@ public class Administrativo extends Empleado {
     }
 
     @Override
-    public void mostarInformacion() {
+    public void mostrarInformacion() {
         System.out.println("=== ADMINISTRATIVO ===");
         System.out.println("Cédula         : " + getCedula());
         System.out.println("Nombre         : " + getNombre());
