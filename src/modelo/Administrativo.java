@@ -7,15 +7,23 @@ public class Administrativo extends Empleado {
 
     public Administrativo(String cedula, String nombre, int edad, String telefono, String correo, String departamento, double horasTrabajadas, double valorHora) {
         super(cedula, nombre, edad, telefono, correo);
+        if (departamento == null || departamento.trim().isEmpty()) {
+            throw new IllegalArgumentException("Departamento invalido.");
+        }
+        if (horasTrabajadas < 0) {
+            throw new IllegalArgumentException("Horas invalidas.");
+        }
+        if (valorHora <= 0) {
+
+            throw new IllegalArgumentException("Valor hora invalido.");
+        }
         this.departamento = departamento;
         this.horasTrabajadas = horasTrabajadas;
         this.valorHora = valorHora;
     }
 
-    // Getters y Setters
-    public String getDepartamento(){
-        return departamento;
-    }
+
+    public String getDepartamento(){return departamento;}
     public double getHorasTrabajadas(){
         return horasTrabajadas;
     }
@@ -23,13 +31,24 @@ public class Administrativo extends Empleado {
         return valorHora;
     }
 
-    public void setDepartamento(String departamento){
+    public void setDepartamento(String departamento) {
+        if (departamento == null || departamento.trim().isEmpty()) {
+            throw new IllegalArgumentException("Departamento invalido.");
+        }
         this.departamento = departamento;
     }
-    public void setHorasTrabajadas(double horasTrabajadas){
+
+    public void setHorasTrabajadas(double horasTrabajadas) {
+        if (horasTrabajadas < 0) {
+            throw new IllegalArgumentException("Horas trabajadas invalidas.");
+        }
         this.horasTrabajadas = horasTrabajadas;
     }
-    public void setValorHora(double valorHora){
+
+    public void setValorHora(double valorHora) {
+        if (valorHora <= 0) {
+            throw new IllegalArgumentException("Valor hora invalido.");
+        }
         this.valorHora = valorHora;
     }
 

@@ -3,6 +3,7 @@ package servicio;
 import modelo.Administrativo;
 import modelo.Empleado;
 import modelo.Medico;
+import util.Validador;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -26,28 +27,61 @@ public class EmpleadoServicio {
             System.out.println("Cedula: ");
             String cedula = sc.nextLine();
 
+            for (Empleado e : empleados) {
+                if (e.getCedula().equals(cedula)) {
+                    System.out.println("Cedula duplicada.");
+                    return;
+                }
+            }
+
             System.out.println("Nombre: ");
             String nombre = sc.nextLine();
+            if (!Validador.validarTexto(nombre)) {
+                System.out.println("Nombre invalido.");
+                return;
+            }
 
             System.out.println("Edad: ");
-            int edad = sc.nextInt();
-            sc.nextLine();
+            int edad = Integer.parseInt(sc.nextLine());
+            if (!Validador.validarEdad(edad)) {
+                System.out.println("Edad invalida.");
+                return;
+            }
 
             System.out.println("Telefono: ");
             String telefono = sc.nextLine();
+            if (!Validador.validarTelefono(telefono)) {
+                System.out.println("Telefono invalido.");
+                return;
+            }
 
             System.out.println("Correo: ");
             String correo = sc.nextLine();
+            if (!Validador.validarCorreo(correo)) {
+                System.out.println("Correo invalido.");
+                return;
+            }
 
             System.out.println("Especialidad: ");
             String especialidad = sc.nextLine();
+            if (!Validador.validarTexto(especialidad)) {
+                System.out.println("Especialidad invalida.");
+                return;
+            }
 
             System.out.println("Numero de pacientes atendidos: ");
             int numeroPacienteAtendidos = sc.nextInt();
+            if (!Validador.validarNumeroPositivo(numeroPacienteAtendidos)) {
+                System.out.println("Numero invalido.");
+                return;
+            }
 
             System.out.println("Valor consulta: ");
-            double valorConsulta = sc.nextDouble();
-            sc.nextLine();
+            double valorConsulta = Double.parseDouble(sc.nextLine());
+            if (!Validador.validarNumeroPositivo(valorConsulta)) {
+                System.out.println("Numero invalido.");
+                return;
+            }
 
             Medico medico = new Medico(cedula, nombre, edad, telefono, correo, especialidad, numeroPacienteAtendidos, valorConsulta);
 
@@ -70,28 +104,61 @@ public class EmpleadoServicio {
             System.out.println("Cedula: ");
             String cedula = sc.nextLine();
 
+            for (Empleado e : empleados) {
+                if (e.getCedula().equals(cedula)) {
+                    System.out.println("Cedula duplicada.");
+                    return;
+                }
+            }
+
             System.out.println("Nombre: ");
             String nombre = sc.nextLine();
+            if (!Validador.validarTexto(nombre)) {
+                System.out.println("Nombre invalido.");
+                return;
+            }
 
             System.out.println("Edad: ");
-            int edad = sc.nextInt();
-            sc.nextLine();
+            int edad = Integer.parseInt(sc.nextLine());
+            if (!Validador.validarEdad(edad)) {
+                System.out.println("Edad invalida.");
+                return;
+            }
 
             System.out.println("Telefono: ");
             String telefono = sc.nextLine();
+            if (!Validador.validarTelefono(telefono)) {
+                System.out.println("Telefono invalido.");
+                return;
+            }
 
             System.out.println("Correo: ");
             String correo = sc.nextLine();
+            if (!Validador.validarCorreo(correo)) {
+                System.out.println("Correo invalido.");
+                return;
+            }
 
             System.out.println("Departamento: ");
             String departamento = sc.nextLine();
+            if (!Validador.validarTexto(departamento)) {
+                System.out.println("Departamento invalido.");
+                return;
+            }
 
             System.out.println("Horas trabajadas: ");
             int horasTrabajadas = sc.nextInt();
+            if (!Validador.validarNumeroPositivo(horasTrabajadas)) {
+                System.out.println("Horas invalidas.");
+                return;
+            }
 
             System.out.println("Valor hora: ");
-            double valorHora = sc.nextDouble();
-            sc.nextLine();
+            double valorHora = Double.parseDouble(sc.nextLine());
+            if (!Validador.validarNumeroPositivo(valorHora)) {
+                System.out.println("Valor hora invalido.");
+                return;
+            }
 
             Administrativo administrativo = new Administrativo(cedula, nombre, edad, telefono, correo, departamento, horasTrabajadas, valorHora);
 
@@ -276,4 +343,3 @@ public class EmpleadoServicio {
         System.out.println("Promedio pagos: $" + promedioPagos);
     }
 }
-
