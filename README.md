@@ -1,148 +1,269 @@
-README – Explicación de Conceptos Utilizados en el Proyecto
-Descripción General
+# README – Sistema de Gestión de Empleados en Java
 
-Este proyecto fue desarrollado en Java utilizando Programación Orientada a Objetos (POO).
-El sistema permite registrar y administrar empleados de tipo médico y administrativo, aplicando conceptos importantes como:
+---
 
-Herencia
-Encapsulamiento
-Polimorfismo
-Excepciones
-Conversiones
-Validaciones
-1. Herencia
+# Descripción General
+
+Este proyecto fue desarrollado en Java utilizando los principios de Programación Orientada a Objetos (POO).
+
+El sistema permite registrar y administrar empleados médicos y administrativos aplicando conceptos fundamentales como:
+
+* Herencia
+* Encapsulamiento
+* Polimorfismo
+* Excepciones
+* Conversiones
+* Validaciones
+
+---
+
+# 1. Herencia
 
 La herencia permite que una clase hija reutilice atributos y métodos de una clase padre.
 
-En el proyecto, la clase Empleado funciona como clase base y las clases Medico y Administrativo heredan de ella.
+En este proyecto:
 
-Clase padre
+* `Empleado` → Clase padre
+* `Medico` y `Administrativo` → Clases hijas
+
+## Clase Padre
+
+```java
 public abstract class Empleado
-Clases hijas
+```
+
+## Clases Hijas
+
+```java
 public class Medico extends Empleado
+```
+
+```java
 public class Administrativo extends Empleado
-¿Qué se hereda?
+```
+
+## ¿Qué se hereda?
 
 Las clases hijas heredan:
 
-cedula
-nombre
-edad
-telefono
-correo
-getters y setters
+* cedula
+* nombre
+* edad
+* telefono
+* correo
+* métodos getters y setters
 
-Gracias a esto se evita repetir código.
+## Beneficio
 
-2. Encapsulamiento
+Evita repetir código y facilita la organización del sistema.
 
-El encapsulamiento consiste en proteger los datos de una clase usando atributos privados y permitiendo el acceso mediante métodos públicos.
+---
 
-Ejemplo
+# 2. Encapsulamiento
+
+El encapsulamiento protege los atributos de una clase usando `private` y permitiendo acceso mediante métodos públicos.
+
+## Ejemplo
+
+```java
 private String nombre;
+```
 
-El atributo no puede modificarse directamente desde otra clase.
+El atributo no puede ser modificado directamente desde otra clase.
 
-Para acceder se usan métodos:
+## Acceso mediante métodos
 
+### Getter
+
+```java
 public String getNombre() {
     return nombre;
 }
+```
+
+### Setter
+
+```java
 public void setNombre(String nombre) {
     this.nombre = nombre;
 }
-Beneficio
+```
+
+## Beneficio
 
 Permite controlar y validar la información antes de modificarla.
 
-3. Polimorfismo
+---
 
-El polimorfismo permite que un mismo método tenga diferentes comportamientos según el objeto.
+# 3. Polimorfismo
 
-En este proyecto, la clase Empleado declara métodos abstractos:
+El polimorfismo permite que un mismo método funcione de manera diferente según el objeto que lo utilice.
 
+La clase `Empleado` declara métodos abstractos:
+
+```java
 public abstract void mostrarInformacion();
 public abstract double calcularPago();
+```
 
-Cada clase hija implementa estos métodos de forma diferente.
+Cada clase hija implementa estos métodos de manera distinta.
 
-En la clase Medico
+## En la clase Medico
+
+```java
 @Override
 public double calcularPago() {
     return numeroPacientesAtendidos * valorConsulta;
 }
-En la clase Administrativo
+```
+
+## En la clase Administrativo
+
+```java
 @Override
 public double calcularPago() {
     return horasTrabajadas * valorHora;
 }
-Beneficio
+```
 
-Cada tipo de empleado calcula su pago de manera distinta usando el mismo método.
+## Beneficio
 
-4. Excepciones
+Cada tipo de empleado calcula su pago de forma diferente usando el mismo método.
 
-Las excepciones sirven para controlar errores durante la ejecución del programa y evitar que el sistema se cierre inesperadamente.
+---
 
-Ejemplo utilizado
+# 4. Excepciones
+
+Las excepciones permiten controlar errores durante la ejecución del programa.
+
+Gracias a ellas el sistema evita cerrarse inesperadamente.
+
+## Ejemplo utilizado
+
+```java
 try {
     opcion = Integer.parseInt(sc.nextLine());
 } catch (NumberFormatException e) {
     System.out.println("Error: debe ingresar numeros.");
 }
-Excepciones usadas
-NumberFormatException
-IllegalArgumentException
-Función
+```
 
-Permiten detectar errores como:
+## Excepciones usadas
 
-ingresar letras donde van números
-datos inválidos
-valores negativos
-campos vacíos
-5. Conversiones
+| Excepción                  | Función                               |
+| -------------------------- | ------------------------------------- |
+| `NumberFormatException`    | Detecta letras donde deben ir números |
+| `IllegalArgumentException` | Detecta valores inválidos             |
+
+## Beneficio
+
+Permiten manejar errores como:
+
+* letras en campos numéricos
+* datos vacíos
+* números negativos
+* información inválida
+
+---
+
+# 5. Conversiones
 
 Las conversiones transforman datos de un tipo a otro.
 
-En el proyecto se convierten datos String ingresados por teclado a números.
+En el proyecto se convierten datos `String` ingresados por teclado hacia tipos numéricos.
 
-Conversión a entero
+## Conversión a entero
+
+```java
 int edad = Integer.parseInt(sc.nextLine());
-Conversión a decimal
+```
+
+## Conversión a decimal
+
+```java
 double valorConsulta = Double.parseDouble(sc.nextLine());
-Beneficio
+```
 
-Permite trabajar correctamente con operaciones matemáticas y validaciones.
+## Beneficio
 
-6. Validaciones
+Permite realizar operaciones matemáticas correctamente.
+
+---
+
+# 6. Validaciones
 
 Las validaciones verifican que los datos ingresados sean correctos antes de guardarlos.
 
 Se utiliza la clase:
 
+```java
 Validador
-Validaciones implementadas
-Validar correo
+```
+
+## Validar correo
+
+```java
 public static boolean validarCorreo(String correo) {
     return correo.contains("@") && correo.contains(".");
 }
-Validar edad
+```
+
+## Validar edad
+
+```java
 public static boolean validarEdad(int edad) {
     return edad > 0 && edad < 150;
 }
-Validar texto
+```
+
+## Validar texto
+
+```java
 public static boolean validarTexto(String texto) {
     return texto != null && !texto.trim().isEmpty();
 }
-Validar teléfono
+```
+
+## Validar teléfono
+
+```java
 public static boolean validarTelefono(String telefono) {
     return telefono.matches("\\d+");
 }
-Validar números positivos
+```
+
+## Validar números positivos
+
+```java
 public static boolean validarNumeroPositivo(double numero) {
     return numero > 0;
 }
-Beneficio
+```
+
+## Beneficio
 
 Evita registrar información incorrecta en el sistema.
+
+---
+
+# Conclusión
+
+Este proyecto aplica correctamente los principios fundamentales de Programación Orientada a Objetos en Java.
+
+Gracias al uso de:
+
+* Herencia
+* Encapsulamiento
+* Polimorfismo
+* Excepciones
+* Conversiones
+* Validaciones
+
+el sistema es más:
+
+* organizado
+* reutilizable
+* seguro
+* fácil de mantener
+
+Además, permite controlar errores y garantizar que los datos ingresados sean válidos.
