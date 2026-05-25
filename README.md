@@ -267,3 +267,11 @@ el sistema es más:
 * fácil de mantener
 
 Además, permite controlar errores y garantizar que los datos ingresados sean válidos.
+
+<img width="396" height="681" alt="image" src="https://github.com/user-attachments/assets/c31ecf11-0642-4b1d-ba40-864354dca040" />
+<img width="351" height="376" alt="image" src="https://github.com/user-attachments/assets/807815c1-00e2-4e13-9de4-e0aee24e4328" />
+<img width="456" height="511" alt="image" src="https://github.com/user-attachments/assets/515eeddc-7a1f-4f04-a9f1-1d469539b08d" />
+<img width="314" height="280" alt="image" src="https://github.com/user-attachments/assets/78169741-28a1-4675-b3b2-7264a9e7499f" />
+<img width="314" height="183" alt="image" src="https://github.com/user-attachments/assets/2f04a7ec-412b-4611-ae37-0c8aa965c320" />
+<img width="364" height="364" alt="image" src="https://github.com/user-attachments/assets/49df0663-3cc1-4c30-b61b-40366a735291" />
+
