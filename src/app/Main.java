@@ -58,7 +58,7 @@ public class Main {
                         System.out.println("Opcion invalida.");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Error: opcion invalida.");
+                System.out.println("Error: debe ingresar numeros.");
             }
         } while (opcion != 9);
     }

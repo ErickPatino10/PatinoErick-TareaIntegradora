@@ -70,11 +70,12 @@ public class EmpleadoServicio {
             }
 
             System.out.println("Numero de pacientes atendidos: ");
-            int numeroPacienteAtendidos = sc.nextInt();
+            int numeroPacienteAtendidos = Integer.parseInt(sc.nextLine());
             if (!Validador.validarNumeroPositivo(numeroPacienteAtendidos)) {
                 System.out.println("Numero invalido.");
                 return;
             }
+
 
             System.out.println("Valor consulta: ");
             double valorConsulta = Double.parseDouble(sc.nextLine());
@@ -90,7 +91,7 @@ public class EmpleadoServicio {
             System.out.println("Medico registrado con exito.");
 
         } catch (IllegalArgumentException e) {
-            System.out.println("Error " + e.getMessage());
+            System.out.println("Error: debe ingresar numeros.");
         }
     }
 
@@ -147,7 +148,7 @@ public class EmpleadoServicio {
             }
 
             System.out.println("Horas trabajadas: ");
-            int horasTrabajadas = sc.nextInt();
+            int horasTrabajadas = Integer.parseInt(sc.nextLine());
             if (!Validador.validarNumeroPositivo(horasTrabajadas)) {
                 System.out.println("Horas invalidas.");
                 return;
@@ -166,8 +167,8 @@ public class EmpleadoServicio {
 
             System.out.println("Administrativo registrado con exito.");
 
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Error: debe ingresar numeros.");
         }
     }
 
@@ -196,78 +197,108 @@ public class EmpleadoServicio {
     }
 
     public void actualizarEmpleado() {
+        try {
 
-        System.out.print("\nIngrese la cedula del empleado: ");
-        String cedulaBuscada = sc.nextLine();
+            System.out.println("\nIngrese la cedula del empleado:");
+            String cedulaBuscada = sc.nextLine();
 
-        for (Empleado e : empleados) {
+            for (Empleado e : empleados) {
+                if (e.getCedula().equals(cedulaBuscada)) {
 
-            if (e.getCedula().equals(cedulaBuscada)) {
+                    System.out.println("Nuevo nombre:");
+                    String nombre = sc.nextLine();
+                    if (!Validador.validarTexto(nombre)) {
+                        System.out.println("Nombre invalido.");
+                        return;
+                    }
+                    e.setNombre(nombre);
 
-                System.out.println("\n=== EMPLEADO ENCONTRADO ===");
-                e.mostrarInformacion();
+                    System.out.println("Nueva edad:");
+                    int edad = Integer.parseInt(sc.nextLine());
+                    if (!Validador.validarEdad(edad)) {
+                        System.out.println("Edad invalida.");
+                        return;
+                    }
+                    e.setEdad(edad);
 
-                // DATOS GENERALES
-                System.out.println("\n=== INGRESE LOS NUEVOS DATOS ===");
+                    System.out.println("Nuevo telefono:");
+                    String telefono = sc.nextLine();
+                    if (!Validador.validarTelefono(telefono)) {
+                        System.out.println("Telefono invalido.");
+                        return;
+                    }
+                    e.setTelefono(telefono);
 
-                System.out.print("Nuevo nombre: ");
-                e.setNombre(sc.nextLine());
+                    System.out.println("Nuevo correo:");
+                    String correo = sc.nextLine();
+                    if (!Validador.validarCorreo(correo)) {
+                        System.out.println("Correo invalido.");
+                        return;
+                    }
+                    e.setCorreo(correo);
 
-                System.out.print("Nueva edad: ");
-                e.setEdad(sc.nextInt());
-                sc.nextLine();
+                    if (e instanceof Medico) {
+                        Medico medico = (Medico) e;
 
-                System.out.print("Nuevo telefono: ");
-                e.setTelefono(sc.nextLine());
+                        System.out.println("Nueva especialidad:");
+                        String especialidad = sc.nextLine();
+                        if (!Validador.validarTexto(especialidad)) {
+                            System.out.println("Especialidad invalida.");
+                            return;
+                        }
+                        medico.setEspecialidad(especialidad);
 
-                System.out.print("Nuevo correo: ");
-                e.setCorreo(sc.nextLine());
+                        System.out.println("Nuevo numero pacientes:");
+                        int pacientes = Integer.parseInt(sc.nextLine());
+                        if (!Validador.validarNumeroPositivo(pacientes)) {
+                            System.out.println("Numero invalido.");
+                            return;
+                        }
+                        medico.setNumeroPacientesAtendidos(pacientes);
+                        System.out.println("Nuevo valor consulta:");
+                        double valorConsulta = Double.parseDouble(sc.nextLine());
+                        if (!Validador.validarNumeroPositivo(valorConsulta)) {
+                            System.out.println("Valor invalido.");
+                            return;
+                        }
+                        medico.setValorConsulta(valorConsulta);
+                    }
+                    else if (e instanceof Administrativo) {
+                        Administrativo admin = (Administrativo) e;
+                        System.out.println("Nuevo departamento:");
+                        String departamento = sc.nextLine();
+                        if (!Validador.validarTexto(departamento)) {
+                            System.out.println("Departamento invalido.");
+                            return;
+                        }
+                        admin.setDepartamento(departamento);
 
-                // SI ES MEDICO
-                if (e instanceof Medico) {
+                        System.out.println("Nuevas horas trabajadas:");
+                        double horas = Double.parseDouble(sc.nextLine());
+                        if (!Validador.validarNumeroPositivo(horas)) {
+                            System.out.println("Horas invalidas.");
+                            return;
+                        }
+                        admin.setHorasTrabajadas(horas);
 
-                    Medico medico = (Medico) e;
-
-                    System.out.println("\n=== DATOS DEL MEDICO ===");
-
-                    System.out.print("Nueva especialidad: ");
-                    medico.setEspecialidad(sc.nextLine());
-
-                    System.out.print("Nuevo numero de pacientes: ");
-                    medico.setNumeroPacientesAtendidos(sc.nextInt());
-
-                    System.out.print("Nuevo valor consulta: ");
-                    medico.setValorConsulta(sc.nextDouble());
-                    sc.nextLine();
-
-                    System.out.println("\nMedico actualizado correctamente.");
+                        System.out.println("Nuevo valor hora:");
+                        double valorHora = Double.parseDouble(sc.nextLine());
+                        if (!Validador.validarNumeroPositivo(valorHora)) {
+                            System.out.println("Valor hora invalido.");
+                            return;
+                        }
+                        admin.setValorHora(valorHora);
+                    }
+                    System.out.println("\nEmpleado actualizado correctamente.");
+                    return;
                 }
-
-
-                else if (e instanceof Administrativo) {
-
-                    Administrativo admin = (Administrativo) e;
-
-                    System.out.println("\n=== DATOS DEL ADMINISTRATIVO ===");
-
-                    System.out.print("Nuevo departamento: ");
-                    admin.setDepartamento(sc.nextLine());
-
-                    System.out.print("Nuevas horas trabajadas: ");
-                    admin.setHorasTrabajadas(sc.nextDouble());
-
-                    System.out.print("Nuevo valor por hora: ");
-                    admin.setValorHora(sc.nextDouble());
-                    sc.nextLine();
-
-                    System.out.println("\nAdministrativo actualizado correctamente.");
-                }
-
-                return;
             }
+            System.out.println("Empleado no encontrado.");
+        } catch (NumberFormatException e) {
+            System.out.println("Error: debe ingresar numeros.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " );
         }
-
-        System.out.println("\nEmpleado no encontrado.");
     }
 
     public void eliminarEmpleado() {
